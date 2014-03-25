@@ -42,10 +42,23 @@ public class LoginServlet extends HttpServlet {
 		switch(flag){
 			case 0:
 			{
+				System.out.println("login ok");
+				response.sendRedirect("index.html");
 				break;
 			}
 			case 1:
 			{
+				System.out.println("error username");
+				break;
+			}
+			case 2:
+			{
+				System.out.println("error pwd");
+				break;
+			}
+			case 3:
+			{
+				System.out.println("other info error");
 				break;
 			}
 			default:
@@ -53,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 				break;
 			}
 		}
-		response.sendRedirect("index.html");
+//		response.sendRedirect("index.html");
 	}
 
 }

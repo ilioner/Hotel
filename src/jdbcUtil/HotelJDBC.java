@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;  
 import java.sql.SQLException;  
 import java.sql.Statement;  
+import java.util.ArrayList;
+
+import entity.AdminUser;
   
 public class HotelJDBC {  
     // 创建静态全局变量  
@@ -12,12 +15,12 @@ public class HotelJDBC {
   
     static Statement st;  
   
-    public static void main(String[] args) {  
-        insert();   //插入添加记录  
-        update();   //更新记录数据  
-        delete();   //删除记录  
-        query();    //查询记录并显示  
-    }  
+//    public static void main(String[] args) {  
+//        insert();   //插入添加记录  
+//        update();   //更新记录数据  
+//        delete();   //删除记录  
+//        query();    //查询记录并显示  
+//    }  
       
     /* 插入数据记录，并输出插入的数据记录数*/  
     public static void insert() {  
@@ -61,7 +64,7 @@ public class HotelJDBC {
     }  
   
     /* 查询数据库，输出符合要求的记录的情况*/  
-    public static boolean queryLogin() {  
+    public static ArrayList queryLogin() {  
           
         conn = getConnection(); //同样先要获取连接，即连接到数据库  
         try {  
@@ -70,22 +73,26 @@ public class HotelJDBC {
               
             ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
             System.out.println("最后的查询结果为：");  
+            ArrayList<AdminUser> list = new ArrayList<AdminUser>();
             while (rs.next()) { // 判断是否还有下一个数据  
-                  
+                AdminUser admin = new AdminUser();
                 // 根据字段名获取相应的值  
                 String name = rs.getString("username");  
                 String pwd = rs.getString("password");    
-                  
+                admin.username = name;
+                admin.password = pwd;
                 //输出查到的记录的各个字段的值  
                 System.out.println(name + " " + pwd );  
-              
+                list.add(admin);
             }  
             conn.close();   //关闭数据库连接  
-            return true;
+//            return true;
+            return list;
         } catch (SQLException e) {  
-            System.out.println("查询数据失败");  
+            System.out.println("查询数据失败");
+            return null;
         }
-		return false;  
+//		return false;  
     }  
   
     /* 删除符合要求的记录，输出情况*/  
