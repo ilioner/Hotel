@@ -120,7 +120,7 @@ public class HotelJDBC {
             Class.forName("com.mysql.jdbc.Driver");// 加载Mysql数据驱动  
               
             con = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/myuser", "root", "root");// 创建数据连接  
+                    "jdbc:mysql://localhost:3306/hotelTask", "root", "root");// 创建数据连接  
               
         } catch (Exception e) {  
             System.out.println("数据库连接失败" + e.getMessage());  

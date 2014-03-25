@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import jdbcUtil.HotelJDBC;
 /**
  * Servlet implementation class LoginServlet
  */
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String userName = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
-		
+		HotelJDBC.getConnection();
 		response.sendRedirect("index.html");
 	}
 
