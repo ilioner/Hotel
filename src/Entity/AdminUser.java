@@ -1,10 +1,11 @@
-package Entity;
+package entity;
 
 public class AdminUser {
 
-	Integer id;
-	String adminName;
-	String password;
+	public Integer id;
+	public String adminName;
+	public String password;
+	public String username;
 	public AdminUser(Integer id, String adminName, String password) {
 		super();
 		this.id = id;

@@ -61,11 +61,11 @@ public class HotelJDBC {
     }  
   
     /* 查询数据库，输出符合要求的记录的情况*/  
-    public static void query() {  
+    public static boolean queryLogin() {  
           
         conn = getConnection(); //同样先要获取连接，即连接到数据库  
         try {  
-            String sql = "select * from staff";     // 查询数据的sql语句  
+            String sql = "select * from AdminUser";     // 查询数据的sql语句  
             st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
               
             ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
@@ -73,24 +73,19 @@ public class HotelJDBC {
             while (rs.next()) { // 判断是否还有下一个数据  
                   
                 // 根据字段名获取相应的值  
-                String name = rs.getString("name");  
-                int age = rs.getInt("age");  
-                String sex = rs.getString("sex");  
-                String address = rs.getString("address");  
-                String depart = rs.getString("depart");  
-                String worklen = rs.getString("worklen");  
-                String wage = rs.getString("wage");  
+                String name = rs.getString("username");  
+                String pwd = rs.getString("password");    
                   
                 //输出查到的记录的各个字段的值  
-                System.out.println(name + " " + age + " " + sex + " " + address  
-                        + " " + depart + " " + worklen + " " + wage);  
+                System.out.println(name + " " + pwd );  
               
             }  
             conn.close();   //关闭数据库连接  
-              
+            return true;
         } catch (SQLException e) {  
             System.out.println("查询数据失败");  
-        }  
+        }
+		return false;  
     }  
   
     /* 删除符合要求的记录，输出情况*/  
@@ -120,10 +115,10 @@ public class HotelJDBC {
             Class.forName("com.mysql.jdbc.Driver");// 加载Mysql数据驱动  
               
             con = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost:3306/hotelTask", "root", "root");// 创建数据连接  
-              
+                    "jdbc:mysql://localhost:3306/Hotel", "root", "root");// 创建数据连接  
+            System.out.println("数据库连接"); 
         } catch (Exception e) {  
-            System.out.println("数据库连接失败" + e.getMessage());  
+            System.out.println("数据库连接失败" + e);  
         }  
         return con; //返回所建立的数据库连接  
     }  

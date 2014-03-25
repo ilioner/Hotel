@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 public class HotelConsumer {
 	Integer id;
