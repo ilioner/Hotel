@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/zql/Documents/zhang.qinlong/MyDic/MyStudy/Java/Hotel/mysql-connector-java-5.1.27.jar"/>
 	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/annotations-api.jar"/>
 	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/catalina-ant.jar"/>
 	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/catalina-ha.jar"/>
@@ -19,5 +18,6 @@
 	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/tomcat-i18n-es.jar"/>
 	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/tomcat-i18n-fr.jar"/>
 	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/tomcat-i18n-ja.jar"/>
+	<classpathentry kind="lib" path="/Users/zql/Documents/apache-tomcat-6.0.39/lib/mysql-connector-java-5.1.27.jar"/>
 	<classpathentry kind="output" path="WebRoot\WEB-INF\classes"/>
 </classpath>

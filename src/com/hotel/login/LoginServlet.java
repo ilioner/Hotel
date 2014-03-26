@@ -26,7 +26,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("get method");
-		response.sendRedirect("UI/content/schedule/scheduleInfo.html");
 	}
 
 	/**
@@ -34,7 +33,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Post method");
-		response.sendRedirect("UI/content/schedule/scheduleInfo.html");
 		String userName = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		AdminUser admin = new AdminUser();
