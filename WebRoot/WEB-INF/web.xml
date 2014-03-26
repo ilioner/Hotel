@@ -3,7 +3,6 @@
   <display-name>Hotel</display-name>
   <welcome-file-list>
     <welcome-file>UI/login/index.html</welcome-file>
-<!-- <welcome-file>UI/content/schedule/scheduleInfo.html</welcome-file> -->
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -14,5 +13,15 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/loginServet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ScheduleServlet</display-name>
+    <servlet-name>ScheduleServlet</servlet-name>
+    <servlet-class>com.hotel.schedule.ScheduleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScheduleServlet</servlet-name>
+    <url-pattern>/schedule</url-pattern>
   </servlet-mapping>
 </web-app>
