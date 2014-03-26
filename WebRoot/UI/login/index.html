@@ -8,17 +8,47 @@
 	#center
 	{
 		margin-top:100px;
-		background:#F00; 
-		color:#FFF
+		/* backgr ound:#F00; 
+		color:#FFF */
+	}
+	#loginView
+	{
+		margin-left:200px;
+		margin-top:10px;
+		width:60%;
+		hight:50%;
+		/* background:#FFF; 
+		color:#0ad0; */
 	}
 </style>
 <body>
 <div>
-111
-	<div id="center" background="#0ff000">
-	222
-		<form>
-		333
+<p>酒店管理系统</p>
+	<div id="center">
+	<p>登陆页面</p>
+		<form id="loginView" action="login" method="post">
+		
+		<tr>
+          <td height="35" align="right" class="FontWeight">用户名：</td>
+          <td><input name="username" type="text" class="Input" id="AdminName" /></td>
+      </tr>
+      <br/>
+        <tr>
+          <td height="35" align="right" class="FontWeight">密码：</td>
+          <td><input name="pwd" type="password" class="Input" id="AdminPass" /></td>
+        </tr>
+       <br/>
+        <tr>
+          <td height="10" colspan="2" align="center"></td>
+      </tr>
+      <br/>
+            <td height="40" colspan="2" align="center">
+            <input name="Submits" type="submit" class="Button" id="Submits" value="登录" />             
+             &nbsp;&nbsp;<input name="ReSet" type="reset" class="Button" id="ReSet" value="重置" /></td>
+        </tr>
+        </li>
+
+		
 		</form>
 	</div>
 

@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 			case 0:
 			{
 				System.out.println("login ok");
-				response.sendRedirect("index.html");
+				response.sendRedirect("UI/content/Schedule/scheduleInfo.html");
 				break;
 			}
 			case 1:
