@@ -34,7 +34,7 @@ public class ScheduleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("-----//////---");
-		response.sendRedirect("UI/comment/success.html");
+		response.sendRedirect("UI/common/success.html");
 	}
 
 }
