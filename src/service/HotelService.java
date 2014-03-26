@@ -7,7 +7,7 @@ public class HotelService {
 
 	public static int adminLoginConfrim(AdminUser adminUser)
 	{
-		ArrayList<AdminUser> adminList = HotelJDBC.queryLogin();
+		ArrayList<AdminUser> adminList = (ArrayList<AdminUser>)HotelJDBC.queryLogin();
 		for(AdminUser user:adminList)
 		{
 			if( user.username.equals(adminUser.username) && user.password.equals(adminUser.password)) 

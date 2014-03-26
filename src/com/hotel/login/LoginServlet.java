@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.sendRedirect("UI/content/schedule/scheduleInfo.html");
 	}
 
 	/**
@@ -33,6 +34,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("Post method");
+		response.sendRedirect("UI/content/schedule/scheduleInfo.html");
 		String userName = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		AdminUser admin = new AdminUser();
@@ -43,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 			case 0:
 			{
 				System.out.println("login ok");
-				response.sendRedirect("UI/content/Schedule/scheduleInfo.html");
+				response.sendRedirect("UI/content/schedule/scheduleInfo.html");
 				break;
 			}
 			case 1:
@@ -66,7 +69,6 @@ public class LoginServlet extends HttpServlet {
 				break;
 			}
 		}
-//		response.sendRedirect("index.html");
 	}
 
 }
