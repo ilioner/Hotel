@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.HotelService;
+import entity.HotelClient;
+
 /**
  * Servlet implementation class ScheduleServlet
  */
@@ -32,9 +35,32 @@ public class ScheduleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("-----//////---");
-		response.sendRedirect("UI/common/success.html");
+		System.out.println(request.getParameter("method"));
+		if(request.getParameter("method").equals("yuding")) 
+		{
+	        yuding(request,response); 
+		} 
+	}
+
+	private void yuding(HttpServletRequest request, HttpServletResponse response) {
+		HotelClient client = new HotelClient();
+		client.cleintname = request.getParameter("clientname");
+		String sexClient = request.getParameter("sex");
+		client.sex = sexClient;
+		client.age = request.getParameter("age");
+		client.shenfenzheng = request.getParameter("shenfenzheng");
+		client.minzu = request.getParameter("minzu");
+		client.dianhua = Integer.valueOf(request.getParameter("dianhua")).intValue();
+		int key = HotelService.clientYuding(client);
+		switch(key)
+		{
+			case 0:
+				break;
+			case 1:
+				break;
+			default:
+				break;
+		}
 	}
 
 }

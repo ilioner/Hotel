@@ -7,7 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;  
 import java.util.ArrayList;
 
+import com.mysql.jdbc.PreparedStatement;
+
 import entity.AdminUser;
+import entity.HotelClient;
   
 public class HotelJDBC {  
     // 创建静态全局变量  
@@ -23,25 +26,34 @@ public class HotelJDBC {
 //    }  
       
     /* 插入数据记录，并输出插入的数据记录数*/  
-    public static void insert() {  
+    public static boolean insertAClient(HotelClient client) {  
           
         conn = getConnection(); // 首先要获取连接，即连接到数据库  
   
         try {  
-            String sql = "INSERT INTO staff(name, age, sex,address, depart, worklen,wage)"  
-                    + " VALUES ('Tom1', 32, 'M', 'china','Personnel','3','3000')";  // 插入数据的sql语句  
-              
+        	
+            String sql = "insert into `Hotel`.`client` ( `minzu`, `yuding`, `clientname`, `age`, `dianhua`, `shenfenzheng`, `sex`)"+
+            " values ( ?, ?, ?, ?, ?, ?, ?)";  // 插入数据的sql语句  
             st = (Statement) conn.createStatement();    // 创建用于执行静态sql语句的Statement对象  
-              
-            int count = st.executeUpdate(sql);  // 执行插入操作的sql语句，并返回插入数据的个数  
-              
-            System.out.println("向staff表中插入 " + count + " 条数据"); //输出插入操作的处理结果  
-              
+            PreparedStatement sta = (PreparedStatement) conn.prepareStatement(sql); 
+            sta.setString(1,client.minzu);
+            sta.setInt(2, 1);
+            sta.setString(3, client.cleintname);
+            sta.setString(4, client.age);
+            sta.setInt(5, client.dianhua);
+            sta.setString(6, client.shenfenzheng);
+            sta.setString(7, client.sex); 
+            int rows = sta.executeUpdate(); 
+            if(rows > 0) { 
+                  System.out.println("operate successfully!"); 
+            } 
+            sta.close();
             conn.close();   //关闭数据库连接  
               
         } catch (SQLException e) {  
             System.out.println("插入数据失败" + e.getMessage());  
-        }  
+        } 
+        return true;
     }  
       
     /* 更新符合要求的记录，并返回更新的记录数目*/  

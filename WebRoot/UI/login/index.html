@@ -1,57 +1,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="GB18030">
-<title>Insert title here</title>
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>æ— æ ‡é¢˜æ–‡æ¡£</title>
 <style type="text/css">
-	#center
-	{
-		margin-top:100px;
-		/* backgr ound:#F00; 
-		color:#FFF */
-	}
-	#loginView
-	{
-		margin-left:200px;
-		margin-top:10px;
-		width:60%;
-		hight:50%;
-		/* background:#FFF; 
-		color:#0ad0; */
-	}
+#apDiv1 {
+	position:absolute;
+	width:295px;
+	height:159px;
+	z-index:1;
+	left: 129px;
+	top: 37px;
+}
+#apDiv2 {
+	position:absolute;
+	width:295px;
+	height:129px;
+	z-index:2;
+	left: 0px;
+	top: 30px;
+}
 </style>
+</head>
+
 <body>
-<div>
-<p>--------</p>
-	<div id="center">
-	<p>-------</p>
-		<form id="loginView" action="/Hotel/loginServet" method="post">
-		
-		<tr>
-          <td height="35" align="right" class="FontWeight">ÓÃ»§Ãû£º</td>
-          <td><input name="username" type="text" class="Input" id="AdminName" /></td>
-      </tr>
-      <br/>
-        <tr>
-          <td height="35" align="right" class="FontWeight">ÃÜÂë£º</td>
-          <td><input name="pwd" type="password" class="Input" id="AdminPass" /></td>
-        </tr>
-       <br/>
-        <tr>
-          <td height="10" colspan="2" align="center"></td>
-      </tr>
-      <br/>
-            <td height="40" colspan="2" align="center">
-            <input type="submit" value="µÇÂ¼" />             
-             &nbsp;&nbsp;<input type="reset" value="ÖØÖÃ" /></td>
-        </tr>
-        </li>
-
-		
-		</form>
-	</div>
-
+<div>æ­¤å¤„æ˜¾ç¤ºæ–° Div æ ‡ç­¾çš„å†…å®¹</div>
+<div id="apDiv1">
+  <div>
+    <div id="apDiv2">
+    <form action="/Hotel/loginServet" method="post">
+      <p>
+      <a>  
+       33</a>
+        <input name="username" type="text" />
+      </p>
+      <p>&nbsp;
+      <a>33</a>
+        <input name="pwd" type="password" />
+       </p>
+       <input type="submit" name="" value="ç™»é™†"/>
+       <input type="reset" name="" value="é‡ç½®"/>
+    </form>
+    </div>
+</div>
+  
 </div>
 </body>
 </html>

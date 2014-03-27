@@ -1,23 +1,23 @@
 package entity;
 
 public class HotelClient {
-	Integer id;
-	String cleintname;
-	String sex;
-	String age;
-	String shenfenzheng;
-	String minzu;
-	Integer dianhua;
-	Integer roomno;
-	Integer yuding;
+	public int id;
+	public String cleintname;
+	public String sex;
+	public String age;
+	public String shenfenzheng;
+	public String minzu;
+	public int dianhua;
+	public int roomno;
+	public int yuding;
 	public HotelClient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getCleintname() {
@@ -53,21 +53,22 @@ public class HotelClient {
 	public Integer getDianhua() {
 		return dianhua;
 	}
-	public void setDianhua(Integer dianhua) {
+	public void setDianhua(int dianhua) {
 		this.dianhua = dianhua;
 	}
 	public Integer getRoomno() {
 		return roomno;
 	}
-	public void setRoomno(Integer roomno) {
+	public void setRoomno(int roomno) {
 		this.roomno = roomno;
 	}
 	public Integer getYuding() {
 		return yuding;
 	}
-	public void setYuding(Integer yuding) {
+	public void setYuding(int yuding) {
 		this.yuding = yuding;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -75,13 +76,13 @@ public class HotelClient {
 		result = prime * result + ((age == null) ? 0 : age.hashCode());
 		result = prime * result
 				+ ((cleintname == null) ? 0 : cleintname.hashCode());
-		result = prime * result + ((dianhua == null) ? 0 : dianhua.hashCode());
+		result = prime * result + dianhua;
 		result = prime * result + ((minzu == null) ? 0 : minzu.hashCode());
-		result = prime * result + ((roomno == null) ? 0 : roomno.hashCode());
+		result = prime * result + roomno;
 		result = prime * result + ((sex == null) ? 0 : sex.hashCode());
 		result = prime * result
 				+ ((shenfenzheng == null) ? 0 : shenfenzheng.hashCode());
-		result = prime * result + ((yuding == null) ? 0 : yuding.hashCode());
+		result = prime * result + yuding;
 		return result;
 	}
 	@Override
@@ -103,20 +104,14 @@ public class HotelClient {
 				return false;
 		} else if (!cleintname.equals(other.cleintname))
 			return false;
-		if (dianhua == null) {
-			if (other.dianhua != null)
-				return false;
-		} else if (!dianhua.equals(other.dianhua))
+		if (dianhua != other.dianhua)
 			return false;
 		if (minzu == null) {
 			if (other.minzu != null)
 				return false;
 		} else if (!minzu.equals(other.minzu))
 			return false;
-		if (roomno == null) {
-			if (other.roomno != null)
-				return false;
-		} else if (!roomno.equals(other.roomno))
+		if (roomno != other.roomno)
 			return false;
 		if (sex == null) {
 			if (other.sex != null)
@@ -128,10 +123,7 @@ public class HotelClient {
 				return false;
 		} else if (!shenfenzheng.equals(other.shenfenzheng))
 			return false;
-		if (yuding == null) {
-			if (other.yuding != null)
-				return false;
-		} else if (!yuding.equals(other.yuding))
+		if (yuding != other.yuding)
 			return false;
 		return true;
 	}

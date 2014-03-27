@@ -2,6 +2,7 @@ package service;
 import java.util.ArrayList;
 
 import entity.AdminUser;
+import entity.HotelClient;
 import jdbcUtil.HotelJDBC;
 public class HotelService {
 
@@ -22,5 +23,14 @@ public class HotelService {
 			}
 		}
 		return 3;
+	}
+	public static int clientYuding(HotelClient client)
+	{
+		if( HotelJDBC.insertAClient(client) )
+		{
+			return 0;
+		}else{
+			return 1;
+		}
 	}
 }
