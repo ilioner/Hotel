@@ -49,11 +49,11 @@ public class HotelJDBC {
             } 
             sta.close();
             conn.close();   //关闭数据库连接  
-              
+            return true;
         } catch (SQLException e) {  
             System.out.println("插入数据失败" + e.getMessage());  
+            return false;
         } 
-        return true;
     }  
       
     /* 更新符合要求的记录，并返回更新的记录数目*/  

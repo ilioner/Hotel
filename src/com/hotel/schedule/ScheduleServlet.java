@@ -42,7 +42,7 @@ public class ScheduleServlet extends HttpServlet {
 		} 
 	}
 
-	private void yuding(HttpServletRequest request, HttpServletResponse response) {
+	private void yuding(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
 		HotelClient client = new HotelClient();
 		client.cleintname = request.getParameter("clientname");
 		String sexClient = request.getParameter("sex");
@@ -55,8 +55,10 @@ public class ScheduleServlet extends HttpServlet {
 		switch(key)
 		{
 			case 0:
+				response.sendRedirect("UI/common/success.html");
 				break;
 			case 1:
+				response.sendRedirect("UI/common/fail.html");
 				break;
 			default:
 				break;
