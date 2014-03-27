@@ -58,7 +58,7 @@ public class ScheduleServlet extends HttpServlet {
 				response.sendRedirect("UI/common/success.html");
 				break;
 			case 1:
-				response.sendRedirect("UI/common/fail.html");
+				response.sendRedirect("UI/content/schedule/scheduleInfo.html");
 				break;
 			default:
 				break;
