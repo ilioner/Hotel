@@ -73,9 +73,9 @@
 <p>&nbsp;</p>
 <div id="apDiv2">
   <div id="apDiv5">
-  	<a href="/Hotel/UI/content/schedule/scheduleInfo.html">1</a>
-	<p><a href="#">2</a></p>
-    <p><a href="/Hotel/UI/content/schedule/deleteSchedule.html">3</a></p>
+  	<a href="/Hotel/UI/content/schedule/scheduleInfo.html">Ô¤¶¨</a>
+	<p><a href="#">ÐÞ¸Ä</a></p>
+    <p><a href="/Hotel/UI/content/schedule/deleteSchedule.html">É¾³ý</a></p>
     <p>&nbsp;</p>
   </div>
   <div id="apDiv6">

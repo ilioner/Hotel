@@ -36,10 +36,29 @@ public class ScheduleServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getParameter("method"));
+		request.setCharacterEncoding("GB18030");
 		if(request.getParameter("method").equals("yuding")) 
 		{
 	        yuding(request,response); 
-		} 
+		} else if (request.getParameter("method").equals("deleteSchedule")){
+			deleteThisSchedule(request,response);
+		}
+	}
+
+	private void deleteThisSchedule(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String idCard = request.getParameter("idCard");
+		if(HotelService.deleteThisSchedule(idCard)){
+			System.out.println(" delete OK");
+			request.setAttribute("status","É¾³ý³É¹¦");   
+			getServletContext().getRequestDispatcher("/UI/common/success.jsp").forward   
+			  (request,   response);  
+		}else{
+			System.out.println(" delete error");
+			request.setAttribute("status","É¾³ýÊ§°Ü£¬Çë¼ì²éÉí·ÝÖ¤ºÅÂë");   
+			getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+			  (request,   response);
+		}
 	}
 
 	private void yuding(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {

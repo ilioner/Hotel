@@ -127,6 +127,32 @@ public class HotelJDBC {
           
     }  
       
+    
+    /* 删除符合要求的记录，输出情况*/  
+    public static boolean deleteASchedule(String idCard) {  
+  
+        conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "delete from client  where shenfenzheng = '"+ idCard +"'";// 删除数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            int count = st.executeUpdate(sql);// 执行sql删除语句，返回删除数据的数量  
+              
+            System.out.println("staff表中删除 " + count + " 条数据\n");    //输出删除操作的处理结果  
+            st.close();  
+            conn.close();   //关闭数据库连接  
+            if (count == 0){
+          	  return false;
+            }else{
+          	  return true;
+            }
+        } catch (SQLException e) {  
+            System.out.println("删除数据失败");  
+            return false;
+        }  
+          
+    }
+    
     /* 获取数据库连接的函数*/  
     public static Connection getConnection() {  
         Connection con = null;  //创建用于连接数据库的Connection对象  
