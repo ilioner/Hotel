@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Post method");
+		request.setCharacterEncoding("GB18030");
 		String userName = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		AdminUser admin = new AdminUser();
@@ -50,20 +51,32 @@ public class LoginServlet extends HttpServlet {
 			case 1:
 			{
 				System.out.println("error username");
+				request.setAttribute("status", "用户名错误");
+				getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+				  (request,   response);  
 				break;
 			}
 			case 2:
 			{
 				System.out.println("error pwd");
+				request.setAttribute("status", "密码错误");
+				getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+				  (request,   response);
 				break;
 			}
 			case 3:
 			{
 				System.out.println("other info error");
+				request.setAttribute("status", "内部错误");
+				getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+				  (request,   response);
 				break;
 			}
 			default:
 			{
+				request.setAttribute("status", "内部错误");
+				getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+				  (request,   response);
 				break;
 			}
 		}
