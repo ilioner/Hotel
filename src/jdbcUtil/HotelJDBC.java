@@ -107,6 +107,37 @@ public class HotelJDBC {
 //		return false;  
     }  
   
+    /* 查询数据库，输出符合要求的记录的情况*/  
+    public static HotelClient getAClient(String idCard) {  
+          
+        conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "select * from HotelClient where shenfenzheng = "+idCard+"\"";     // 查询数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
+            System.out.println("最后的查询结果为：");  
+            HotelClient client = new HotelClient();
+            while (rs.next()) { // 判断是否还有下一个数据                  
+            	// 根据字段名获取相应的值  
+                client.cleintname = rs.getString("clientname");
+                client.sex = rs.getString("sex");
+                client.age = rs.getString("age");
+                client.shenfenzheng = rs.getString("shenfenzheng");
+                client.minzu = rs.getString("shenfenzheng");
+                client.dianhua = Integer.parseInt(rs.getString("shenfenzheng"));
+            }  
+            rs.close();
+            conn.close();   //关闭数据库连接  
+            return client;
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");
+            return null;
+        }
+//		return false;  
+    }
+    
+    
     /* 删除符合要求的记录，输出情况*/  
     public static void delete() {  
   

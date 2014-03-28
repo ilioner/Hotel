@@ -38,4 +38,9 @@ public class HotelService {
 		HotelJDBC.deleteASchedule(idCard);
 		return false;
 	}
+	
+	public static HotelClient getClientSchedule(String idCard){
+		
+		return HotelJDBC.getAClient(idCard);
+	}
 }

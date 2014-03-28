@@ -42,6 +42,27 @@ public class ScheduleServlet extends HttpServlet {
 	        yuding(request,response); 
 		} else if (request.getParameter("method").equals("deleteSchedule")){
 			deleteThisSchedule(request,response);
+		} else if (request.getParameter("method").equals("getAScheduel")){
+			getASchedule(request,response);
+		}
+	}
+
+	private void getASchedule(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String idCard = request.getParameter("idCard");
+		if (idCard.length() != 0){
+			if (HotelService.getClientSchedule(idCard) != null)
+			{
+				HotelClient client = HotelService.getClientSchedule(idCard);
+				request.setAttribute("HotelClient",client);   
+				getServletContext().getRequestDispatcher("/UI/content/schedule/modifySchedule.jsp").forward   
+				  (request,   response);
+			}else
+			{
+				request.setAttribute("status","查找失败，请检查您所输入的身份证号码或者稍后再试，");   
+				getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+				  (request,   response);
+			}
 		}
 	}
 
@@ -74,7 +95,9 @@ public class ScheduleServlet extends HttpServlet {
 		switch(key)
 		{
 			case 0:
-				response.sendRedirect("UI/common/success.html");
+				request.setAttribute("status","预定成功");   
+				getServletContext().getRequestDispatcher("/UI/common/success.jsp").forward   
+				  (request,   response);
 				break;
 			case 1:
 				response.sendRedirect("UI/content/schedule/scheduleInfo.html");

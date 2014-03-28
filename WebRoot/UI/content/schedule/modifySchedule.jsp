@@ -1,3 +1,4 @@
+<%@page import="entity.*"%>
 <%@ page language="java" contentType="text/html; charset=GB18030"
     pageEncoding="GB18030"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -82,8 +83,12 @@
   	adasda
   	<form action="/Hotel/scheduleInfo" method="post">
   		<input name="method" type="hidden" value="yuding">
-  		<a>姓名：</a><input type="text" name="clientname">
-  		<p>&nbsp;</p>	
+  		
+  		<a>身份证：</a><a><%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng %></a>
+  			
+  		<a>姓名：</a>
+  		<input type="text" name="clientname" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).clientname%>"/>
+  		<p>&nbsp;</p>
   		<a>性别：</a><input type="radio" name="sex" value="M"><a>男</a>
   		<a>     </a><input type="radio" name="sex" value="F"><a>女</a>
   		<p>&nbsp;</p>
