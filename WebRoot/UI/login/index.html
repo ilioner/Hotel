@@ -6,40 +6,54 @@
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
-	width:295px;
-	height:159px;
+	width:439px;
+	height:240px;
 	z-index:1;
-	left: 129px;
-	top: 37px;
+	left: 310px;
+	top: 201px;
+	background-color: #66CCCC;
+	background-image: url(/loginContentBg.png);
 }
 #apDiv2 {
 	position:absolute;
-	width:295px;
-	height:129px;
+	width:316px;
+	height:140px;
 	z-index:2;
-	left: 0px;
-	top: 30px;
+	left: 61px;
+	top: 93px;
+}
+#apDiv3 {
+	position:absolute;
+	width:1024px;
+	height:150px;
+	z-index:2;
+	left: 11px;
+	background-color: #66CCFF;
+	background-image: url(/top.png);
+}
+body,td,th {
+	color: #C00;
+}
+body {
+	background-image: url(/topBg.png);
 }
 </style>
 </head>
 
-<body>
-<div>此处显示新 Div 标签的内容</div>
+<body background="topBg.png">
+<div id="apDiv3"></div>
 <div id="apDiv1">
   <div>
     <div id="apDiv2">
     <form action="/Hotel/loginServet" method="post">
-      <p>
-      <a>  
-       33</a>
-        <input name="username" type="text" />
+      <p>管理员账户名：
+        <input name="username" type="text" maxlength="20" />
       </p>
-      <p>&nbsp;
-      <a>33</a>
-        <input name="pwd" type="password" />
+      <p>管 理 员 密  码： <a></a>
+        <input name="pwd" type="password" value="" maxlength="20" />
        </p>
        <input type="submit" name="" value="登陆"/>
-       <input type="reset" name="" value="重置"/>
+       <input type="reset" name="input" value="重置"/>
     </form>
     </div>
 </div>

@@ -61,12 +61,10 @@
 <div id="apDiv1">
   <p>&nbsp;</p>
   <div id="apDiv4">
-  	<a href="#">#</a>
-    <a href="#">#</a>
-    <a href="#">#</a>
-    <a href="#">#</a>
-    <a href="#">#</a>
-    <a href="#">#</a>
+  	<a href="#">预订客户</a>
+    <a href="#">查询客户</a>
+    <a href="#">客户入住</a>
+    <a href="#">客户退房</a>
   
   </div>
   <p>&nbsp;</p>
@@ -80,7 +78,6 @@
     <p>&nbsp;</p>
   </div>
   <div id="apDiv6">
-  	adasda
   	<form action="/Hotel/scheduleInfo" method="post">
   		<input name="method" type="hidden" value="modifyThisSchedule">
   		
