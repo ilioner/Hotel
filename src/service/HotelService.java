@@ -35,8 +35,8 @@ public class HotelService {
 	}
 	
 	public static boolean deleteThisSchedule(String idCard){
-		HotelJDBC.deleteASchedule(idCard);
-		return false;
+		
+		return HotelJDBC.deleteASchedule(idCard);
 	}
 	
 	public static HotelClient getClientSchedule(String idCard){
