@@ -82,25 +82,24 @@
   <div id="apDiv6">
   	adasda
   	<form action="/Hotel/scheduleInfo" method="post">
-  		<input name="method" type="hidden" value="yuding">
+  		<input name="method" type="hidden" value="modifyThisSchedule">
   		
   		<a>身份证：</a><a><%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng %></a>
-  			
+  		<p>&nbsp;</p>
   		<a>姓名：</a>
+  		<input type="text" name="shenfenzheng" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng%>" hidden="hidden"/>
   		<input type="text" name="clientname" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).clientname%>"/>
   		<p>&nbsp;</p>
-  		<a>性别：</a><input type="radio" name="sex" value="M"><a>男</a>
-  		<a>     </a><input type="radio" name="sex" value="F"><a>女</a>
+  		<a>性别：</a><input type="radio" name="sex" value="M" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("M")?"checked":""%>"><a>男</a>
+  		<a>     </a><input type="radio" name="sex" value="F" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("F")?"checked":""%>"><a>女</a>
   		<p>&nbsp;</p>
-  		<a>年龄：</a><input type="text" name="age">
+  		<a>年龄：</a><input type="text" name="age" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).age%>">
   		<p>&nbsp;</p>
-  		<a>身份证：</a><input type="text" name="shenfenzheng">
+  		<a>民族：</a><input type="text" name="minzu" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).minzu%>">
   		<p>&nbsp;</p>
-  		<a>民族：</a><input type="text" name="minzu">
+  		<a>电话：</a><input type="text" name="dianhua" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).dianhua%>">
   		<p>&nbsp;</p>
-  		<a>电话：</a><input type="text" name="dianhua">
-  		<p>&nbsp;</p>
-  		<input type="submit" name="" value="预定">
+  		<input type="submit" name="" value="修改">
   		<input type="reset" name="" value="重置">
   	</form>
   </div>

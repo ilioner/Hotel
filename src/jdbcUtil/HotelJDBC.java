@@ -38,7 +38,7 @@ public class HotelJDBC {
             PreparedStatement sta = (PreparedStatement) conn.prepareStatement(sql); 
             sta.setString(1,client.minzu);
             sta.setInt(2, 1);
-            sta.setString(3, client.cleintname);
+            sta.setString(3, client.clientname);
             sta.setString(4, client.age);
             sta.setInt(5, client.dianhua);
             sta.setString(6, client.shenfenzheng);
@@ -109,10 +109,12 @@ public class HotelJDBC {
   
     /* 查询数据库，输出符合要求的记录的情况*/  
     public static HotelClient getAClient(String idCard) {  
-          
+    	System.out.println("geta////////////////////// "+idCard); 
         conn = getConnection(); //同样先要获取连接，即连接到数据库  
         try {  
-            String sql = "select * from HotelClient where shenfenzheng = "+idCard+"\"";     // 查询数据的sql语句  
+        	System.out.println("geta21212121 "+idCard);
+            String sql = "select * from client where shenfenzheng="+idCard;  
+            System.out.println(sql);// 查询数据的sql语句  
             st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
               
             ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
@@ -120,7 +122,7 @@ public class HotelJDBC {
             HotelClient client = new HotelClient();
             while (rs.next()) { // 判断是否还有下一个数据                  
             	// 根据字段名获取相应的值  
-                client.cleintname = rs.getString("clientname");
+                client.clientname = rs.getString("clientname");
                 client.sex = rs.getString("sex");
                 client.age = rs.getString("age");
                 client.shenfenzheng = rs.getString("shenfenzheng");
@@ -131,7 +133,7 @@ public class HotelJDBC {
             conn.close();   //关闭数据库连接  
             return client;
         } catch (SQLException e) {  
-            System.out.println("查询数据失败");
+            System.out.println("查询数据失败"+e);
             return null;
         }
 //		return false;  

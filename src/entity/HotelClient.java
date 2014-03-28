@@ -2,7 +2,7 @@ package entity;
 
 public class HotelClient {
 	public int id;
-	public String cleintname;
+	public String clientname;
 	public String sex;
 	public String age;
 	public String shenfenzheng;
@@ -20,11 +20,11 @@ public class HotelClient {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCleintname() {
-		return cleintname;
+	public String getClientname() {
+		return clientname;
 	}
-	public void setCleintname(String cleintname) {
-		this.cleintname = cleintname;
+	public void setClientname(String clientname) {
+		this.clientname = clientname;
 	}
 	public String getSex() {
 		return sex;
@@ -75,7 +75,7 @@ public class HotelClient {
 		int result = 1;
 		result = prime * result + ((age == null) ? 0 : age.hashCode());
 		result = prime * result
-				+ ((cleintname == null) ? 0 : cleintname.hashCode());
+				+ ((clientname == null) ? 0 : clientname.hashCode());
 		result = prime * result + dianhua;
 		result = prime * result + ((minzu == null) ? 0 : minzu.hashCode());
 		result = prime * result + roomno;
@@ -99,10 +99,10 @@ public class HotelClient {
 				return false;
 		} else if (!age.equals(other.age))
 			return false;
-		if (cleintname == null) {
-			if (other.cleintname != null)
+		if (clientname == null) {
+			if (other.clientname != null)
 				return false;
-		} else if (!cleintname.equals(other.cleintname))
+		} else if (!clientname.equals(other.clientname))
 			return false;
 		if (dianhua != other.dianhua)
 			return false;
@@ -129,7 +129,7 @@ public class HotelClient {
 	}
 	@Override
 	public String toString() {
-		return "HotelClient [id=" + id + ", cleintname=" + cleintname
+		return "HotelClient [id=" + id + ", cleintname=" + clientname
 				+ ", sex=" + sex + ", age=" + age + ", shenfenzheng="
 				+ shenfenzheng + ", minzu=" + minzu + ", dianhua=" + dianhua
 				+ ", roomno=" + roomno + ", yuding=" + yuding + "]";

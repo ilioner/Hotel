@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="javascript :history.back(-1)"><%=request.getAttribute("status") %>返回上一页</a>
+	<a href="javascript:history.back(-1)"><%=request.getAttribute("status") %>返回上一页</a>
 </body>
 </html>

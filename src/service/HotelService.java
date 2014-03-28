@@ -40,7 +40,7 @@ public class HotelService {
 	}
 	
 	public static HotelClient getClientSchedule(String idCard){
-		
+		System.out.println("geta------------------------- "+idCard);
 		return HotelJDBC.getAClient(idCard);
 	}
 }

@@ -43,22 +43,41 @@ public class ScheduleServlet extends HttpServlet {
 		} else if (request.getParameter("method").equals("deleteSchedule")){
 			deleteThisSchedule(request,response);
 		} else if (request.getParameter("method").equals("getAScheduel")){
+			System.out.println("geta ");
 			getASchedule(request,response);
+		} else if (request.getParameter("method").equals("modifyThisSchedule")){
+			modifyASchedule(request,response);
 		}
+	}
+
+	private void modifyASchedule(HttpServletRequest request,
+			HttpServletResponse response) {
+		HotelClient client = new HotelClient();
+		client.clientname = request.getParameter("clientname");
+		String sexClient = request.getParameter("sex");
+		client.sex = sexClient;
+		client.age = request.getParameter("age");
+		client.shenfenzheng = request.getParameter("shenfenzheng");
+		client.minzu = request.getParameter("minzu");
+		client.dianhua = Integer.valueOf(request.getParameter("dianhua")).intValue();
+		
 	}
 
 	private void getASchedule(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String idCard = request.getParameter("idCard");
+		System.out.println("geta "+idCard);
 		if (idCard.length() != 0){
 			if (HotelService.getClientSchedule(idCard) != null)
 			{
+				System.out.println("get ok");
 				HotelClient client = HotelService.getClientSchedule(idCard);
 				request.setAttribute("HotelClient",client);   
 				getServletContext().getRequestDispatcher("/UI/content/schedule/modifySchedule.jsp").forward   
 				  (request,   response);
 			}else
 			{
+				System.out.println("get error");
 				request.setAttribute("status","查找失败，请检查您所输入的身份证号码或者稍后再试，");   
 				getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
 				  (request,   response);
@@ -84,7 +103,7 @@ public class ScheduleServlet extends HttpServlet {
 
 	private void yuding(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
 		HotelClient client = new HotelClient();
-		client.cleintname = request.getParameter("clientname");
+		client.clientname = request.getParameter("clientname");
 		String sexClient = request.getParameter("sex");
 		client.sex = sexClient;
 		client.age = request.getParameter("age");
