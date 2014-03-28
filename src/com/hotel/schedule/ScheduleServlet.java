@@ -51,7 +51,7 @@ public class ScheduleServlet extends HttpServlet {
 	}
 
 	private void modifyASchedule(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws ServletException, IOException {
 		HotelClient client = new HotelClient();
 		client.clientname = request.getParameter("clientname");
 		String sexClient = request.getParameter("sex");
@@ -60,7 +60,15 @@ public class ScheduleServlet extends HttpServlet {
 		client.shenfenzheng = request.getParameter("shenfenzheng");
 		client.minzu = request.getParameter("minzu");
 		client.dianhua = Integer.valueOf(request.getParameter("dianhua")).intValue();
-		
+		if(HotelService.updateASchedule(client)){
+			request.setAttribute("status","修改成功");   
+			getServletContext().getRequestDispatcher("/UI/common/success.jsp").forward   
+			  (request,   response); 
+		}else{
+			request.setAttribute("status","修改失败，请重新尝试");   
+			getServletContext().getRequestDispatcher("/UI/common/fail.jsp").forward   
+			  (request,   response); 
+		}
 	}
 
 	private void getASchedule(HttpServletRequest request,

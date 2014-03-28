@@ -56,7 +56,7 @@ public class HotelJDBC {
         } 
     }  
       
-    /* 更新符合要求的记录，并返回更新的记录数目*/  
+    /* 更新符合要求的记录，并返回更新的记录数目   UPDATE `client` SET `clientname`='13231', `sex`='F' WHERE (`ID`='1')*/  
     public static void update() {  
         conn = getConnection(); //同样先要获取连接，即连接到数据库  
         try {  
@@ -73,7 +73,31 @@ public class HotelJDBC {
         } catch (SQLException e) {  
             System.out.println("更新数据失败");  
         }  
-    }  
+    }
+    
+    public static boolean updateASchedule(HotelClient client) {  
+        conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "update client set clientname='"+client.clientname+
+            		"',sex='"+client.sex+"',age='"+client.age+"',minzu='"+client.minzu+"',dianhua='"+client.dianhua+
+            		"' where shenfenzheng = '"+client.shenfenzheng+"'";// 更新数据的sql语句  
+             System.out.println(sql);
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            int count = st.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数  
+              
+            st.close();  
+            conn.close();   //关闭数据库连接  
+            if(count == 0){
+            	return false;
+            }else{
+            	return true;
+            } 
+        } catch (SQLException e) {  
+            System.out.println("更新数据失败");  
+            return false;
+        }  
+    }
   
     /* 查询数据库，输出符合要求的记录的情况*/  
     public static ArrayList queryLogin() {  

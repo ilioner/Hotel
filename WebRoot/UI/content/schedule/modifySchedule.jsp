@@ -87,7 +87,7 @@
   		<a>身份证：</a><a><%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng %></a>
   		<p>&nbsp;</p>
   		<a>姓名：</a>
-  		<input type="text" name="shenfenzheng" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng%>" hidden="hidden"/>
+  		<input name="shenfenzheng" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng%>" type="hidden"/>
   		<input type="text" name="clientname" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).clientname%>"/>
   		<p>&nbsp;</p>
   		<a>性别：</a><input type="radio" name="sex" value="M" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("M")?"checked":""%>"><a>男</a>
