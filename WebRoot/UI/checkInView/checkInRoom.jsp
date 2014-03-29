@@ -8,6 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>无标题文档</title>
+<Script Language="JavaScript">
+	function onclickAdd()
+	{
+		var clientName = document.getElementsByName('clientName').value;
+		var sex = document.getElementsByName('sex').value;
+		var idCard = document.getElementsByName('idCard').value;
+		var roomNo = document.getElementById('roomNo');
+		var roomNumber = roomNo.options[roomNo.selectedIndex].value;
+		document.getElementById("add").href="/Hotel/checkInClient?clientName="+clientName+"&roomNo="+roomNumber;
+	}
+</script>
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
@@ -99,32 +110,22 @@ body {
   <tr>
     <th width="93" height="25" scope="row">姓名</th>
     <td width="65">性别</td>
-    <td width="55">年龄</td>
-    <td width="42">民族</td>
-    <td width="72">电话</td>
-    <td width="80">身份证号</td>
-    <td width="62">房间号</td>
-    <td width="76">入住情况</td>
+    <td width="55">身份证号</td>
+    <td width="42">预定房间号</td>
+    <td width="72">入住</td>
   </tr>
-  <% 
-	ArrayList<HotelClient> list = (ArrayList<HotelClient>)request.getAttribute("clientList");
-	for(int i=0;i<list.size();i++){
-		HotelClient client = list.get(i);
-%>
 
   <tr>
-    <th width="93" height="23" scope="row"><%=client.clientname %></th>
-    <td width="65"><%=client.sex.equals("F")?"女":"男" %></td>
-    <td width="55"><%=client.age %></td>
-    <td width="42"><%=client.minzu %></td>
-    <td width="72"><%=client.dianhua %></td>
-    <td width="80"><%=client.shenfenzheng %></td>
-    <td width="62"><%=client.roomno==0?"没有入住":client.roomno %></td>
-    <td width="76"><%=client.yuding%></td>
+    <th width="93" height="23" scope="row"><a name="clientName"></a></th>
+    <td width="65"><a name="sex"></a></td>
+    <td width="55"><a name="idCard"></a></td>
+    <td width="42">
+    <select id="roomNo"  style="width:100px;">
+      <option value="201">201</option>
+      <option value="302">302</option>
+    </select></td>
+    <td width="72"><a id="add" onClick="onclickAdd()">#</a></td>
   </tr>
-<%
-  	}
-%>
 </table>
 
 </div>

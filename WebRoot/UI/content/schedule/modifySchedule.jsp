@@ -9,19 +9,21 @@
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
-	width:561px;
+	width:1024px;
 	height:123px;
 	z-index:1;
 	left: 6px;
 	top: 14px;
+	background-image: url(../../login/top.png);
 }
 #apDiv2 {
 	position:absolute;
 	width:558px;
-	height:299px;
+	height:484px;
 	z-index:2;
-	left: 10px;
-	top: 143px;
+	left: 208px;
+	top: 186px;
+	background-image: url(../../img/leftBg.jpg);
 }
 #apDiv3 {
 	position:absolute;
@@ -36,13 +38,13 @@
 	width:555px;
 	height:38px;
 	z-index:3;
-	left: 6px;
-	top: 82px;
+	left: 3px;
+	top: 125px;
 }
 #apDiv5 {
 	position:absolute;
 	width:179px;
-	height:299px;
+	height:483px;
 	z-index:3;
 }
 
@@ -53,6 +55,9 @@
 	z-index:3;
 	left: 183px;
 	top: 1px;
+}
+body {
+	background-image: url(../../img/contentBg.jpg);
 }
 </style>
 </head>
@@ -78,7 +83,7 @@
     <p>&nbsp;</p>
   </div>
   <div id="apDiv6">
-  	<form action="/Hotel/scheduleInfo" method="post">
+<form action="/Hotel/scheduleInfo" method="post">
   		<input name="method" type="hidden" value="modifyThisSchedule">
   		
   		<a>身份证：</a><a><%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng %></a>

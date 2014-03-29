@@ -6,19 +6,21 @@
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
-	width:561px;
+	width:1026px;
 	height:123px;
 	z-index:1;
 	left: 6px;
 	top: 14px;
+	background-image: url(../../login/top.png);
 }
 #apDiv2 {
 	position:absolute;
 	width:558px;
-	height:299px;
+	height:481px;
 	z-index:2;
-	left: 10px;
-	top: 143px;
+	left: 248px;
+	top: 197px;
+	background-image: url(../../img/leftBg.jpg);
 }
 #apDiv3 {
 	position:absolute;
@@ -30,17 +32,18 @@
 }
 #apDiv4 {
 	position:absolute;
-	width:555px;
+	width:580px;
 	height:38px;
 	z-index:3;
 	left: 6px;
-	top: 82px;
+	top: 124px;
 }
 #apDiv5 {
 	position:absolute;
 	width:179px;
-	height:299px;
+	height:477px;
 	z-index:3;
+	background-image: url(../../img/leftBg.jpg);
 }
 
 #apDiv6 {
@@ -48,8 +51,12 @@
 	width:371px;
 	height:293px;
 	z-index:3;
-	left: 183px;
-	top: 1px;
+	left: 178px;
+	top: 4px;
+	background-image: url(../../img/leftBg.jpg);
+}
+body {
+	background-image: url(../../img/contentBg.jpg);
 }
 </style>
 </head>
@@ -60,7 +67,7 @@
   <div id="apDiv4">
   	<a href="#">预订客户</a>
     <a href="/Hotel/checkServlet">查询客户</a>
-    <a href="#">客户入住</a>
+    <a href="/Hotel/UI/checkInView/checkInRoom.jsp">客户入住</a>
     <a href="#">客户退房</a>
   </div>
   <p>&nbsp;</p>
@@ -78,16 +85,21 @@
   <div id="apDiv6">
   	<form action="/Hotel/scheduleInfo" method="post">
   		<input name="method" type="hidden" value="yuding">
-  		<a>姓名：</a><input type="text" name="clientname">
-  		<p>&nbsp;</p>	
+  		<a>姓名：</a>
+  		<input type="text" name="clientname" />
+<p>&nbsp;</p>	
   		<a>性别：</a><input type="radio" name="sex" value="M"><a>男</a>
   		<a>     </a><input type="radio" name="sex" value="F"><a>女</a>
   		<p>&nbsp;</p>
   		<a>年龄：</a><input type="text" name="age">
   		<p>&nbsp;</p>
-  		<a>身份证：</a><input type="text" name="shenfenzheng">
-  		<p>&nbsp;</p>
-  		<a>民族：</a><input type="text" name="minzu">
+  		<p><a>身份证：</a>
+  		  <input type="text" name="shenfenzheng">
+	  </p>
+	  <p>&nbsp;</p>
+  		<p>  		  <a>民族：</a>
+  		  <input type="text" name="minzu">
+	  </p>
   		<p>&nbsp;</p>
   		<a>电话：</a><input type="text" name="dianhua">
   		<p>&nbsp;</p>

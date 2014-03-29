@@ -34,4 +34,14 @@
     <servlet-name>CheckServlet</servlet-name>
     <url-pattern>/checkServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>checkInClient</display-name>
+    <servlet-name>checkInClient</servlet-name>
+    <servlet-class>com.hotel.checkIn.checkInClient</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>checkInClient</servlet-name>
+    <url-pattern>/checkInClient</url-pattern>
+  </servlet-mapping>
 </web-app>

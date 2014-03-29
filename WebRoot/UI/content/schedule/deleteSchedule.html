@@ -6,19 +6,21 @@
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
-	width:561px;
+	width:938px;
 	height:123px;
 	z-index:1;
 	left: 6px;
 	top: 14px;
+	background-image: url(../../login/top.png);
 }
 #apDiv2 {
 	position:absolute;
 	width:558px;
 	height:299px;
 	z-index:2;
-	left: 10px;
-	top: 143px;
+	left: 343px;
+	top: 184px;
+	background-image: url(../../img/leftBg.jpg);
 }
 #apDiv3 {
 	position:absolute;
@@ -51,6 +53,9 @@
 	left: 183px;
 	top: 1px;
 }
+body {
+	background-image: url(../../img/contentBg.jpg);
+}
 </style>
 </head>
 
@@ -76,9 +81,11 @@
   </div>
   <div id="apDiv6">
   	<form action="/Hotel/scheduleInfo" method="post">
-  		<input name="method" type="hidden" value="deleteSchedule">
-  		<a>身份证：</a><input type="text" name="idCard">
-  		<p>&nbsp;</p>	
+  	  <p>
+  	    <input name="method" type="hidden" value="deleteSchedule" />
+        <a>身份证：</a>
+        <input type="text" name="idCard" />
+  	  </p>	
   		<input type="submit" name="" value="删除">
   		<input type="reset" name="" value="重置">
   	</form>
