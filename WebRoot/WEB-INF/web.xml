@@ -24,4 +24,14 @@
     <servlet-name>ScheduleServlet</servlet-name>
     <url-pattern>/scheduleInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckServlet</display-name>
+    <servlet-name>CheckServlet</servlet-name>
+    <servlet-class>com.hotel.check.CheckServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckServlet</servlet-name>
+    <url-pattern>/checkServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

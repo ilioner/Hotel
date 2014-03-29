@@ -36,7 +36,7 @@ public class ScheduleServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(request.getParameter("method"));
-		request.setCharacterEncoding("GB18030");
+		request.setCharacterEncoding("utf-8");
 		if(request.getParameter("method").equals("yuding")) 
 		{
 	        yuding(request,response); 

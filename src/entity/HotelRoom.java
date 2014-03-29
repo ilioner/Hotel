@@ -1,24 +1,24 @@
 package entity;
 
 public class HotelRoom {
-	Integer roomno;
-	Integer statue;
-	String startdate;
-	String enddate;
+	public int roomno;
+	public int statue;
+	public String startdate;
+	public String enddate;
 	public HotelRoom() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Integer getRoomno() {
+	public int getRoomno() {
 		return roomno;
 	}
-	public void setRoomno(Integer roomno) {
+	public void setRoomno(int roomno) {
 		this.roomno = roomno;
 	}
-	public Integer getStatue() {
+	public int getStatue() {
 		return statue;
 	}
-	public void setStatue(Integer statue) {
+	public void setStatue(int statue) {
 		this.statue = statue;
 	}
 	public String getStartdate() {

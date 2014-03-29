@@ -8,9 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.sun.org.apache.xpath.internal.operations.Equals;
 
 import entity.AdminUser;
 import entity.HotelClient;
+import entity.HotelRoom;
   
 public class HotelJDBC {  
     // 创建静态全局变量  
@@ -122,15 +124,42 @@ public class HotelJDBC {
                 list.add(admin);
             }  
             conn.close();   //关闭数据库连接  
-//            return true;
             return list;
         } catch (SQLException e) {  
             System.out.println("查询数据失败");
             return null;
         }
-//		return false;  
     }  
-  
+    
+    public static ArrayList getAllClient()
+    {
+    	conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "select * from client";     // 查询数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
+            System.out.println("最后的查询结果为：");  
+            ArrayList<HotelClient> list = new ArrayList<HotelClient>();
+            while (rs.next()) { // 判断是否还有下一个数据  
+            	HotelClient client = new HotelClient();
+            	 client.clientname = rs.getString("clientname");
+                 client.sex = rs.getString("sex");
+                 client.age = rs.getString("age");
+                 client.shenfenzheng = rs.getString("shenfenzheng");
+                 client.minzu = rs.getString("minzu");
+                 client.dianhua = Integer.parseInt(rs.getString("dianhua"));
+                 client.roomno = Integer.parseInt(rs.getString("roomno")==null?"0":rs.getString("roomno"));
+                 client.yuding = Integer.parseInt(rs.getString("yuding")); 
+                list.add(client);
+            }  
+            conn.close();   //关闭数据库连接  
+            return list;
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");
+            return null;
+        }
+    }
     /* 查询数据库，输出符合要求的记录的情况*/  
     public static HotelClient getAClient(String idCard) {  
     	System.out.println("geta////////////////////// "+idCard); 
@@ -150,8 +179,10 @@ public class HotelJDBC {
                 client.sex = rs.getString("sex");
                 client.age = rs.getString("age");
                 client.shenfenzheng = rs.getString("shenfenzheng");
-                client.minzu = rs.getString("shenfenzheng");
-                client.dianhua = Integer.parseInt(rs.getString("shenfenzheng"));
+                client.minzu = rs.getString("minzu");
+                client.dianhua = Integer.parseInt(rs.getString("dianhua"));
+                client.roomno = Integer.parseInt(rs.getString("roomno")==null?"0":rs.getString("roomno"));
+                client.yuding = Integer.parseInt(rs.getString("yuding"));
             }  
             rs.close();
             conn.close();   //关闭数据库连接  
@@ -209,6 +240,40 @@ public class HotelJDBC {
         }  
           
     }
+    
+    
+    
+    /* 查询数据库，输出符合要求的记录的情况*/  
+    public static ArrayList getRoomList() {  
+          
+        conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "select * from room";     // 查询数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
+            System.out.println("最后的查询结果为：");  
+            ArrayList<HotelRoom> list = new ArrayList<HotelRoom>();
+            while (rs.next()) { // 判断是否还有下一个数据  
+            	HotelRoom room = new HotelRoom();
+            	room.roomno = Integer.parseInt(rs.getString("roomno"));
+            	room.statue = Integer.parseInt(rs.getString("status"));
+            	room.startdate = rs.getString("startdate");
+            	room.enddate = rs.getString("enddate");
+            	// 根据字段名获取相应的值    
+                list.add(room);
+            }  
+            conn.close();   //关闭数据库连接  
+//            return true;
+            return list;
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");
+            return null;
+        }
+//		return false;  
+    }
+    
+    
     
     /* 获取数据库连接的函数*/  
     public static Connection getConnection() {  

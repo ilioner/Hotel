@@ -1,11 +1,11 @@
 <%@page import="entity.*"%>
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>�ޱ����ĵ�</title>
+<title>无标题文档</title>
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
@@ -61,10 +61,10 @@
 <div id="apDiv1">
   <p>&nbsp;</p>
   <div id="apDiv4">
-  	<a href="#">Ԥ���ͻ�</a>
-    <a href="#">��ѯ�ͻ�</a>
-    <a href="#">�ͻ���ס</a>
-    <a href="#">�ͻ��˷�</a>
+  	<a href="#">预订客户</a>
+    <a href="/Hotel/checkServlet">查询客户</a>
+    <a href="#">客户入住</a>
+    <a href="#">客户退房</a>
   
   </div>
   <p>&nbsp;</p>
@@ -72,32 +72,32 @@
 <p>&nbsp;</p>
 <div id="apDiv2">
   <div id="apDiv5">
-  	<a href="/Hotel/UI/content/schedule/scheduleInfo.html">Ԥ��</a>
-	<p><a href="#">�޸�</a></p>
-    <p><a href="/Hotel/UI/content/schedule/deleteSchedule.html">ɾ��</a></p>
+  	<a href="/Hotel/UI/content/schedule/scheduleInfo.html">预定</a>
+	<p><a href="#">修改</a></p>
+    <p><a href="/Hotel/UI/content/schedule/deleteSchedule.html">删除</a></p>
     <p>&nbsp;</p>
   </div>
   <div id="apDiv6">
   	<form action="/Hotel/scheduleInfo" method="post">
   		<input name="method" type="hidden" value="modifyThisSchedule">
   		
-  		<a>����֤��</a><a><%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng %></a>
+  		<a>身份证：</a><a><%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng %></a>
   		<p>&nbsp;</p>
-  		<a>������</a>
+  		<a>姓名：</a>
   		<input name="shenfenzheng" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).shenfenzheng%>" type="hidden"/>
   		<input type="text" name="clientname" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).clientname%>"/>
   		<p>&nbsp;</p>
-  		<a>�Ա�</a><input type="radio" name="sex" value="M" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("M")?"checked":""%>"><a>��</a>
-  		<a>     </a><input type="radio" name="sex" value="F" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("F")?"checked":""%>"><a>Ů</a>
+  		<a>性别：</a><input type="radio" name="sex" value="M" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("M")?"checked":""%>"><a>男</a>
+  		<a>     </a><input type="radio" name="sex" value="F" checked = "<%=(((HotelClient)(request.getAttribute("HotelClient"))).sex).equals("F")?"checked":""%>"><a>女</a>
   		<p>&nbsp;</p>
-  		<a>���䣺</a><input type="text" name="age" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).age%>">
+  		<a>年龄：</a><input type="text" name="age" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).age%>">
   		<p>&nbsp;</p>
-  		<a>���壺</a><input type="text" name="minzu" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).minzu%>">
+  		<a>民族：</a><input type="text" name="minzu" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).minzu%>">
   		<p>&nbsp;</p>
-  		<a>�绰��</a><input type="text" name="dianhua" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).dianhua%>">
+  		<a>电话：</a><input type="text" name="dianhua" value ="<%=((HotelClient)(request.getAttribute("HotelClient"))).dianhua%>">
   		<p>&nbsp;</p>
-  		<input type="submit" name="" value="�޸�">
-  		<input type="reset" name="" value="����">
+  		<input type="submit" name="" value="修改">
+  		<input type="reset" name="" value="重置">
   	</form>
   </div>
 </div>

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import entity.AdminUser;
 import entity.HotelClient;
+import entity.HotelRoom;
 import jdbcUtil.HotelJDBC;
 public class HotelService {
 
@@ -45,6 +46,15 @@ public class HotelService {
 	
 	public static boolean updateASchedule(HotelClient client){
 		return HotelJDBC.updateASchedule(client);
+	}
+	
+	public static ArrayList<HotelRoom> getRoomList()
+	{
+		return HotelJDBC.getRoomList();
+	}
+	public static ArrayList<HotelClient> getAllClientList() {
+		// TODO Auto-generated method stub
+		return HotelJDBC.getAllClient();
 	}
 	
 }
