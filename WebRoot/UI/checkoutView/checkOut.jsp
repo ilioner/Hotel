@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="entity.HotelClient"%>
 <%@page import="entity.HotelRoom"%>
 <%@page import="java.util.ArrayList"%>
@@ -8,24 +9,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>无标题文档</title>
+<Script Language="JavaScript">
+	function checkOut()
+	{
+		var idCard = document.getElementById('shenfenzheng').innerHTML;
+		var roomNo = document.getElementById('roomno').innerHTML;
+		document.getElementById("checkOut").href="/Hotel//CheckOut?idCard="+idCard+"&roomNo="+roomNo;
+	}
+</script>
 <style type="text/css">
 #apDiv1 {
 	position:absolute;
-	width:890px;
+	width:996px;
 	height:123px;
 	z-index:1;
 	left: 6px;
 	top: 14px;
-	background-image: url(../login/top.png);
+	background-image: url(/Hotel/UI/login/top.png);
 }
 #apDiv2 {
 	position:absolute;
-	width:781px;
+	width:865px;
 	height:299px;
 	z-index:2;
 	left: 128px;
 	top: 210px;
-	background-image: url(../img/leftBg.jpg);
+	background-image: url(/Hotel/UI/img/leftBg.jpg);
 }
 #apDiv3 {
 	position:absolute;
@@ -60,14 +69,14 @@
 }
 #apDiv7 {
 	position:absolute;
-	width:596px;
+	width:684px;
 	height:301px;
 	z-index:3;
 	left: 182px;
 	top: -3px;
 }
 body {
-	background-image: url(../img/contentBg.jpg);
+	background-image: url(/Hotel/UI/img/contentBg.jpg);
 }
 </style>
 </head>
@@ -78,7 +87,7 @@ body {
   <div id="apDiv4">
     <a href="/Hotel/UI/content/schedule/scheduleInfo.html">预订客户</a>
     <a href="/Hotel/checkServlet">查询客户</a>
-    <a href="#">客户入住</a>
+    <a href="/Hotel/checkInClient?method=getAll">客户入住</a>
     <a href="#">客户退房</a>
   </div>
   <p>&nbsp;</p>
@@ -86,34 +95,48 @@ body {
 <p>&nbsp;</p>
 <div id="apDiv2">
   <div id="apDiv5">
-  	<a href="/Hotel/checkServlet">房间入住情况</a>
+  	<a >退房</a>
   	<p>&nbsp;</p>
-    <a href="/Hotel/UI/checkView/checkAClient.jsp">客户查询</a>
-    <p>&nbsp;</p>
-    <a href="/Hotel/checkServlet?listAll=YES">显示所有客户</a>
+    <a>输入房间号</a>
+    <form action="/Hotel/CheckOut" method="post" target="_blank">
+    
+    <input name="roomno" type="text">
+    <input name="查找" type="submit" value="查找">
+    
+    </form>
    <!--  <p><a href="#">#</a></p>
     <p><a href="#">#</a></p> -->
     <p>&nbsp;</p>
   </div>
-  <div id="apDiv7"><table width="597" border="1">
+  <div id="apDiv7"><table width="680" border="1">
+  <% 
+	HashMap map = (HashMap)request.getAttribute("hashmap");
+	if(map!=null){
+%>	
+
   <tr>
-    <th width="93" height="25" scope="row">姓名</th>
-    <td width="65">性别</td>
-    <td width="55">身份证号</td>
-    <td width="42">预定房间号</td>
-    <td width="72">入住</td>
+    <th width="108" height="25" scope="row">姓名</th>
+    <td width="36">性别</td>
+    <td width="137">身份证号</td>
+    <td width="65">房间号</td>
+    <td width="119">入住时间</td>
+    <td width="98">退房时间</td>
+    <td width="71">操作</td>
   </tr>
 
   <tr>
-    <th width="93" height="23" scope="row"></th>
-    <td width="65"></td>
-    <td width="55"></td>
-    <td width="42"><select name="">
-      <option value="201"></option>
-      <option value="302"></option>
-    </select></td>
-    <td width="72"></td>
+    <th width="108" height="23" scope="row"><a id="clientname"><%=map.get("clientname") %></th>
+    <td width="36"><a id="sex"><%=map.get("sex") %></td>
+    <td width="137"><a id="shenfenzheng"><%=map.get("shenfenzheng") %></td>
+    <td width="65"><a id="roomno"><%=map.get("roomno") %></td>
+    <td width="119"><a id="startdate"><%=map.get("startdate") %></td>
+    <td width="98"><a id="enddate"><%=map.get("enddate") %></td>
+    <td width="71"><a onclick="checkOut()" id="checkOut">退房</a></td>
   </tr>
+  <%
+	}
+
+%>
 </table>
 
 </div>

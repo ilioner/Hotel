@@ -16,7 +16,7 @@
 	z-index:1;
 	left: 10px;
 	top: 13px;
-	background-image: url(../login/top.png);
+	background-image: url(/Hotel/UI/login/top.png);
 }
 #apDiv2 {
 	position:absolute;
@@ -25,7 +25,7 @@
 	z-index:2;
 	left: 149px;
 	top: 218px;
-	background-image: url(../img/leftBg.jpg);
+	background-image: url(/Hotel/UI/img/leftBg.jpg);
 }
 #apDiv3 {
 	position:absolute;
@@ -93,7 +93,7 @@
 	top: 115px;
 }
 body {
-	background-image: url(../img/contentBg.jpg);
+	background-image: url(/Hotel/UI/img/contentBg.jpg);
 }
 </style>
 </head>
@@ -104,8 +104,8 @@ body {
   <div id="apDiv4">
     <a href="/Hotel/UI/content/schedule/scheduleInfo.html">预订客户</a>
     <a href="/Hotel/checkServlet">查询客户</a>
-    <a href="#">客户入住</a>
-    <a href="#">客户退房</a>
+    <a href="/Hotel/checkInClient?method=getAll">客户入住</a>
+    <a href="/Hotel/UI/checkoutView/checkOut.jsp">客户退房</a>
   </div>
   <p>&nbsp;</p>
 </div>

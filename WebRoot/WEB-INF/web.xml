@@ -44,4 +44,14 @@
     <servlet-name>checkInClient</servlet-name>
     <url-pattern>/checkInClient</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckOut</display-name>
+    <servlet-name>CheckOut</servlet-name>
+    <servlet-class>com.hotel.checkout.CheckOut</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckOut</servlet-name>
+    <url-pattern>/CheckOut</url-pattern>
+  </servlet-mapping>
 </web-app>

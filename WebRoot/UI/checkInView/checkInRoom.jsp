@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="entity.HotelClient"%>
 <%@page import="entity.HotelRoom"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,12 +12,11 @@
 <Script Language="JavaScript">
 	function onclickAdd()
 	{
-		var clientName = document.getElementsByName('clientName').value;
-		var sex = document.getElementsByName('sex').value;
-		var idCard = document.getElementsByName('idCard').value;
+		var idCard = document.getElementById('idCard_').innerHTML;
+		alert(idCard);
 		var roomNo = document.getElementById('roomNo');
 		var roomNumber = roomNo.options[roomNo.selectedIndex].value;
-		document.getElementById("add").href="/Hotel/checkInClient?clientName="+clientName+"&roomNo="+roomNumber;
+		document.getElementById("add").href="/Hotel/checkInClient?idCard="+idCard+"&roomNo="+roomNumber;
 	}
 </script>
 <style type="text/css">
@@ -27,7 +27,7 @@
 	z-index:1;
 	left: 6px;
 	top: 14px;
-	background-image: url(../login/top.png);
+	background-image: url(/Hotel/UI/login/top.png);
 }
 #apDiv2 {
 	position:absolute;
@@ -36,7 +36,7 @@
 	z-index:2;
 	left: 128px;
 	top: 210px;
-	background-image: url(../img/leftBg.jpg);
+	background-image: url(/Hotel/UI/img/leftBg.jpg);
 }
 #apDiv3 {
 	position:absolute;
@@ -78,7 +78,7 @@
 	top: -3px;
 }
 body {
-	background-image: url(../img/contentBg.jpg);
+	background-image: url(/Hotel/UI/img/contentBg.jpg);
 }
 </style>
 </head>
@@ -89,23 +89,24 @@ body {
   <div id="apDiv4">
     <a href="/Hotel/UI/content/schedule/scheduleInfo.html">预订客户</a>
     <a href="/Hotel/checkServlet">查询客户</a>
-    <a href="#">客户入住</a>
-    <a href="#">客户退房</a>
+    <a href="/Hotel/checkInClient?method=getAll">客户入住</a>
+    <a href="/Hotel/UI/checkoutView/checkOut.jsp">客户退房</a>
   </div>
   <p>&nbsp;</p>
 </div>
 <p>&nbsp;</p>
 <div id="apDiv2">
-  <div id="apDiv5">
+  <!--  <div id="apDiv5">
   	<a href="/Hotel/checkServlet">房间入住情况</a>
   	<p>&nbsp;</p>
     <a href="/Hotel/UI/checkView/checkAClient.jsp">客户查询</a>
     <p>&nbsp;</p>
     <a href="/Hotel/checkServlet?listAll=YES">显示所有客户</a>
    <!--  <p><a href="#">#</a></p>
-    <p><a href="#">#</a></p> -->
+    <p><a href="#">#</a></p>
     <p>&nbsp;</p>
   </div>
+  -->
   <div id="apDiv7"><table width="597" border="1">
   <tr>
     <th width="93" height="25" scope="row">姓名</th>
@@ -114,18 +115,36 @@ body {
     <td width="42">预定房间号</td>
     <td width="72">入住</td>
   </tr>
+<%
+	
+	HashMap map = (HashMap)request.getAttribute("map"); 
+	ArrayList clientList = (ArrayList)map.get("clientUnCheckIn");
+	ArrayList rooms = (ArrayList)(map.get("room"));
+	for(int i=0;i<clientList.size();i++){
+		HotelClient client = (HotelClient)clientList.get(i);
+	%>
 
   <tr>
-    <th width="93" height="23" scope="row"><a name="clientName"></a></th>
-    <td width="65"><a name="sex"></a></td>
-    <td width="55"><a name="idCard"></a></td>
+    <th width="93" height="23" scope="row"><a name="clientName"><%=client.clientname %></a></th>
+    <td width="65"><a name="sex"><%=client.sex.equals("F")?"女":"男" %></a></td>
+    <td width="55"><a name="idCard" id="idCard_"><%=client.shenfenzheng %></a></td>
     <td width="42">
     <select id="roomNo"  style="width:100px;">
-      <option value="201">201</option>
+    <%
+    for(int j=0;j<rooms.size();j++){
+		HotelRoom room = (HotelRoom)((ArrayList) (map.get("room"))).get(j);
+	%>
+      <option value="<%=room.roomno %>"><%=room.roomno %></option>
+    <%
+	}
+	%>
       <option value="302">302</option>
     </select></td>
-    <td width="72"><a id="add" onClick="onclickAdd()">#</a></td>
+    <td width="72"><a id="add" onClick="onclickAdd()">登记入住</a></td>
   </tr>
+<%
+	}
+%>
 </table>
 
 </div>

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Post method");
-		request.setCharacterEncoding("GB18030");
+		request.setCharacterEncoding("utf-8");
 		String userName = request.getParameter("username");
 		String pwd = request.getParameter("pwd");
 		AdminUser admin = new AdminUser();

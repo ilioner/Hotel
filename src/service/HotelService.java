@@ -1,5 +1,6 @@
 package service;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import entity.AdminUser;
 import entity.HotelClient;
@@ -57,4 +58,34 @@ public class HotelService {
 		return HotelJDBC.getAllClient();
 	}
 	
+	public static HashMap getRoomNoAndClientSchedule(){
+		HashMap map = new HashMap();
+		map.put("clientUnCheckIn", HotelJDBC.getAllClientNoCheckIn());
+		map.put("room", HotelJDBC.getAllRoomNoCheckIn());
+		return map;
+	}
+	public static boolean updateAllInfoClientAndRoom(String idCard, String roomNo) {
+		boolean clientKey = HotelJDBC.updateAClientYD(idCard,roomNo);
+		boolean roomKey = HotelJDBC.updateARoomStatus(roomNo);
+		if(clientKey && roomKey){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public static HashMap getCheckoutClient(String roomno){
+		
+		return HotelJDBC.getChectOutUser(roomno);
+	}
+	
+	public static boolean checkOutThis(String idCard, String roomNo) {
+		boolean clientKey = HotelJDBC.deleteASchedule(idCard);
+		boolean roomKey = HotelJDBC.resetThisRoom(roomNo);
+		if(clientKey && roomKey){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;  
 import java.sql.SQLException;  
 import java.sql.Statement;  
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.sun.org.apache.xpath.internal.operations.Equals;
@@ -49,6 +52,7 @@ public class HotelJDBC {
             if(rows > 0) { 
                   System.out.println("operate successfully!"); 
             } 
+            conn.commit();
             sta.close();
             conn.close();   //关闭数据库连接  
             return true;
@@ -87,7 +91,7 @@ public class HotelJDBC {
             st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
               
             int count = st.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数  
-              
+            conn.commit();  
             st.close();  
             conn.close();   //关闭数据库连接  
             if(count == 0){
@@ -160,6 +164,61 @@ public class HotelJDBC {
             return null;
         }
     }
+    
+    public static ArrayList getAllClientNoCheckIn()
+    {
+    	conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "select * from client where yuding=1";     // 查询数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
+            System.out.println("最后的查询结果为：");  
+            ArrayList<HotelClient> list = new ArrayList<HotelClient>();
+            while (rs.next()) { // 判断是否还有下一个数据  
+            	HotelClient client = new HotelClient();
+            	 client.clientname = rs.getString("clientname");
+                 client.sex = rs.getString("sex");
+                 client.age = rs.getString("age");
+                 client.shenfenzheng = rs.getString("shenfenzheng");
+                 client.minzu = rs.getString("minzu");
+                 client.dianhua = Integer.parseInt(rs.getString("dianhua"));
+                 client.roomno = Integer.parseInt(rs.getString("roomno")==null?"0":rs.getString("roomno"));
+                 client.yuding = Integer.parseInt(rs.getString("yuding")); 
+                list.add(client);
+            }  
+            conn.close();   //关闭数据库连接  
+            return list;
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");
+            return null;
+        }
+    }
+    
+    public static ArrayList getAllRoomNoCheckIn()
+    {
+    	conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "select * from room where status=0";     // 查询数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
+            System.out.println("最后的查询结果为：");  
+            ArrayList<HotelRoom> list = new ArrayList<HotelRoom>();
+            while (rs.next()) { // 判断是否还有下一个数据  
+            	HotelRoom room = new HotelRoom();
+            	room.roomno = Integer.parseInt(rs.getString("roomno"));
+                list.add(room);
+            }  
+            rs.close();
+            conn.close();  
+            return list;
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");
+            return null;
+        }
+    }
+    
     /* 查询数据库，输出符合要求的记录的情况*/  
     public static HotelClient getAClient(String idCard) {  
     	System.out.println("geta////////////////////// "+idCard); 
@@ -227,6 +286,7 @@ public class HotelJDBC {
             int count = st.executeUpdate(sql);// 执行sql删除语句，返回删除数据的数量  
               
             System.out.println("staff表中删除 " + count + " 条数据\n");    //输出删除操作的处理结果  
+            conn.commit();
             st.close();  
             conn.close();   //关闭数据库连接  
             if (count == 0){
@@ -288,5 +348,111 @@ public class HotelJDBC {
             System.out.println("数据库连接失败" + e);  
         }  
         return con; //返回所建立的数据库连接  
-    }  
+    }
+
+	public static boolean updateAClientYD(String idCard,String roomNo) {
+		conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "update client set yuding= 0 roomno = "+roomNo+" where shenfenzheng = '"+idCard+"'";// 更新数据的sql语句  
+             System.out.println(sql);
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            int count = st.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数  
+            conn.commit();  
+            st.close();  
+            conn.close();   //关闭数据库连接  
+            if(count == 0){
+            	return false;
+            }else{
+            	return true;
+            } 
+        } catch (SQLException e) {  
+            System.out.println("更新数据失败");  
+            return false;
+        }  
+	}
+
+	public static boolean updateARoomStatus(String roomNo) {
+		conn = getConnection(); //同样先要获取连接，即连接到数据库  
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String startDate = df.format(new Date());// new Date()为获取当前系统时间
+        try {  
+            String sql = "update room set status= 1,startdate="+startDate+" where roomno = '"+roomNo+"'";// 更新数据的sql语句  
+             System.out.println(sql);
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            int count = st.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数  
+            conn.commit();  
+            st.close();  
+            conn.close();   //关闭数据库连接  
+            if(count == 0){
+            	return false;
+            }else{
+            	return true;
+            } 
+        } catch (SQLException e) {  
+            System.out.println("更新数据失败");  
+            return false;
+        }
+	}
+	
+	/* 查询数据库，输出符合要求的记录的情况*/  
+    public static HashMap getChectOutUser( String roomno) {  
+          
+        conn = getConnection(); //同样先要获取连接，即连接到数据库  
+        try {  
+            String sql = "SELECT * FROM client JOIN room ON (client.roomno = room.roomno) WHERE client.roomno = "+roomno;     // 查询数据的sql语句  
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            ResultSet rs = st.executeQuery(sql);    //执行sql查询语句，返回查询数据的结果集  
+            System.out.println("最后的查询结果为：");  
+            HashMap map = new HashMap();
+            while (rs.next()) { // 判断是否还有下一个数据  
+            	map.put("clientname", rs.getString("clientname"));
+            	map.put("sex", rs.getString("sex").equals("F")?"女":"男");
+            	map.put("shenfenzheng", rs.getString("shenfenzheng"));
+            	map.put("roomno", rs.getString("roomno"));
+            	if(rs.getString("roomno") == null){
+            		return null;
+            	}
+            	map.put("startdate", rs.getString("startdate"));
+            	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        		String end = df.format(new Date());
+            	map.put("enddate", end);
+            }  
+            conn.close();   //关闭数据库连接  
+//            return true;
+            return map;
+        } catch (SQLException e) {  
+            System.out.println("查询数据失败");
+            return null;
+        }
+//		return false;  
+    }
+
+	public static boolean resetThisRoom(String roomNo) {
+		conn = getConnection(); //同样先要获取连接，即连接到数据库  
+		String nil = "";
+        try {  
+            String sql = "update room set status= 0,startdate="+nil+",enddate="+nil+" where roomno = '"+roomNo+"'";// 更新数据的sql语句  
+             System.out.println(sql);
+            st = (Statement) conn.createStatement();    //创建用于执行静态sql语句的Statement对象，st属局部变量  
+              
+            int count = st.executeUpdate(sql);// 执行更新操作的sql语句，返回更新数据的个数  
+            conn.commit();  
+            st.close();  
+            conn.close();   //关闭数据库连接  
+            if(count == 0){
+            	return false;
+            }else{
+            	return true;
+            } 
+        } catch (SQLException e) {  
+            System.out.println("更新数据失败");  
+            return false;
+        }
+	}
+
+	
+	
 }
